@@ -1,0 +1,21 @@
+1. Vulnerabilidad: Inyección SQL
+- En la conexión a la base de datos, se utiliza el método `mysql.createConnection()` con los parámetros de conexión hardcodeados.
+- Mejora: Utilizar un archivo de configuración separado para almacenar los parámetros de conexión, como un archivo `.env`.
+
+2. Vulnerabilidad: Almacenamiento inseguro de contraseñas
+- En la autenticación con Passport.js, se utiliza el algoritmo de hash `bcryptjs`, pero no se especifica la cantidad de rondas de hash.
+- Mejora: Especificar la cantidad de rondas de hash en el algoritmo de hash `bcryptjs`, como `bcryptjs.hash(contraseña, 12)`.
+
+3. Vulnerabilidad: Uso inseguro de JSON Web Tokens (JWT)
+- En la generación de tokens JWT, se utiliza el secreto hardcodeado en el código.
+- Mejora: Utilizar un secreto aleatorio y seguro para generar los tokens JWT, como uno generado con `crypto.randomBytes(32).toString('hex')`.
+
+4. Vulnerabilidad: Falta de validación de entrada
+- En la autenticación con Passport.js, no se valida la entrada del usuario antes de intentar autenticarlo.
+- Mejora: Agregar validación de entrada para asegurarse de que el usuario haya proporcionado credenciales válidas.
+
+5. Vulnerabilidad: Uso de bibliotecas desactualizadas
+- En el código, se utiliza la biblioteca `mysql` que es desactualizada y no se recomienda su uso.
+- Mejora: Utilizar una biblioteca más actualizada y segura para interactuar con la base de datos, como `mysql2` o `sequelize`.
+
+Espero que estas sugerencias te ayuden a mejorar la seguridad de tu código. ¡Si tienes alguna pregunta o necesitas más ayuda, no dudes en preguntar!
